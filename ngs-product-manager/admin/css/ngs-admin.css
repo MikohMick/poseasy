@@ -1,0 +1,1374 @@
+/* =============================================================================
+   NGS Product Manager — Admin CSS
+   Mobile-first, touch-friendly
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   Base
+   ----------------------------------------------------------------------------- */
+#ngs-app {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+    color: #1d2327;
+    line-height: 1.5;
+    max-width: 1200px;
+}
+
+#ngs-app *,
+#ngs-app *::before,
+#ngs-app *::after {
+    box-sizing: border-box;
+}
+
+#ngs-app a {
+    color: #2271b1;
+    text-decoration: none;
+}
+
+#ngs-app a:hover {
+    text-decoration: underline;
+}
+
+/* -----------------------------------------------------------------------------
+   Typography
+   ----------------------------------------------------------------------------- */
+.ngs-page-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 16px;
+    color: #1d2327;
+}
+
+.ngs-section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1d2327;
+    margin: 0 0 12px;
+}
+
+/* -----------------------------------------------------------------------------
+   Loading Spinner
+   ----------------------------------------------------------------------------- */
+.ngs-spinner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.ngs-spinner::after {
+    content: '';
+    width: 36px;
+    height: 36px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #2271b1;
+    border-radius: 50%;
+    animation: ngs-spin 0.7s linear infinite;
+}
+
+@keyframes ngs-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* -----------------------------------------------------------------------------
+   Cards
+   ----------------------------------------------------------------------------- */
+.ngs-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.2s ease;
+    position: relative;
+}
+
+.ngs-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.ngs-card.ngs-selected {
+    border: 2px solid #2271b1;
+    box-shadow: 0 0 0 3px rgba(34, 113, 177, 0.12);
+}
+
+.ngs-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.ngs-card-checkbox {
+    margin-top: 2px;
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #2271b1;
+}
+
+.ngs-card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    flex: 1;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.ngs-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.ngs-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}
+
+.ngs-card-price {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1d2327;
+}
+
+.ngs-card-stock {
+    font-size: 0.8rem;
+    color: #646970;
+}
+
+.ngs-card-actions {
+    display: flex;
+    gap: 6px;
+}
+
+/* -----------------------------------------------------------------------------
+   Badges / Chips
+   ----------------------------------------------------------------------------- */
+.ngs-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.ngs-badge-sku {
+    background: #f0f6ff;
+    color: #2271b1;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.ngs-badge-category {
+    background: #f0fdf4;
+    color: #166534;
+}
+
+.ngs-badge-variable {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.ngs-badge-single {
+    background: #f0f9ff;
+    color: #0369a1;
+}
+
+.ngs-badge-stock-low {
+    background: #fff1f2;
+    color: #be123c;
+}
+
+/* -----------------------------------------------------------------------------
+   Search & Filter Bar
+   ----------------------------------------------------------------------------- */
+.ngs-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+    align-items: center;
+}
+
+.ngs-search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+}
+
+.ngs-search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8c8f94;
+    pointer-events: none;
+    font-size: 16px;
+}
+
+.ngs-search-input {
+    width: 100%;
+    padding: 10px 10px 10px 34px;
+    border: 1px solid #8c8f94;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    min-height: 44px;
+}
+
+.ngs-search-input:focus {
+    outline: none;
+    border-color: #2271b1;
+    box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.2);
+}
+
+.ngs-filter-select {
+    padding: 10px 12px;
+    border: 1px solid #8c8f94;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fff;
+    min-height: 44px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.ngs-filter-select:focus {
+    outline: none;
+    border-color: #2271b1;
+    box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.2);
+}
+
+/* -----------------------------------------------------------------------------
+   Pill / Toggle Buttons
+   ----------------------------------------------------------------------------- */
+.ngs-pill-group {
+    display: inline-flex;
+    border: 1px solid #8c8f94;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.ngs-pill {
+    padding: 8px 16px;
+    background: #fff;
+    border: none;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+    min-height: 40px;
+    white-space: nowrap;
+}
+
+.ngs-pill:not(:last-child) {
+    border-right: 1px solid #8c8f94;
+}
+
+.ngs-pill:hover {
+    background: #f6f7f7;
+}
+
+.ngs-pill.active {
+    background: #2271b1;
+    color: #fff;
+}
+
+.ngs-pill.active-danger {
+    background: #d63638;
+    color: #fff;
+}
+
+/* -----------------------------------------------------------------------------
+   Buttons
+   ----------------------------------------------------------------------------- */
+.ngs-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
+    min-height: 44px;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.ngs-btn:active {
+    transform: scale(0.97);
+}
+
+.ngs-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.ngs-btn-primary {
+    background: #2271b1;
+    color: #fff;
+}
+
+.ngs-btn-primary:hover:not(:disabled) {
+    background: #135e96;
+    color: #fff;
+}
+
+.ngs-btn-secondary {
+    background: #f6f7f7;
+    color: #1d2327;
+    border: 1px solid #8c8f94;
+}
+
+.ngs-btn-secondary:hover:not(:disabled) {
+    background: #e9e9e9;
+}
+
+.ngs-btn-danger {
+    background: #d63638;
+    color: #fff;
+}
+
+.ngs-btn-danger:hover:not(:disabled) {
+    background: #b32d2e;
+}
+
+.ngs-btn-ghost {
+    background: transparent;
+    color: #2271b1;
+    padding: 6px 10px;
+    min-height: 36px;
+    border-radius: 6px;
+}
+
+.ngs-btn-ghost:hover {
+    background: #f0f6ff;
+}
+
+.ngs-btn-icon {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 8px;
+    min-height: 36px;
+    font-size: 16px;
+}
+
+.ngs-btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+    min-height: 36px;
+    border-radius: 6px;
+}
+
+/* -----------------------------------------------------------------------------
+   FAB — Floating Action Button
+   ----------------------------------------------------------------------------- */
+.ngs-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 16px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #2271b1;
+    color: #fff;
+    font-size: 24px;
+    border: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+    text-decoration: none;
+}
+
+.ngs-fab:hover {
+    background: #135e96;
+    transform: scale(1.05);
+    color: #fff;
+}
+
+.ngs-fab:active {
+    transform: scale(0.95);
+}
+
+/* -----------------------------------------------------------------------------
+   Bulk Action Bar
+   ----------------------------------------------------------------------------- */
+.ngs-bulk-bar {
+    position: sticky;
+    top: 32px;
+    z-index: 100;
+    background: #2271b1;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 16px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 12px rgba(34, 113, 177, 0.35);
+    animation: ngs-slide-in 0.2s ease;
+}
+
+@keyframes ngs-slide-in {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.ngs-bulk-count {
+    font-weight: 600;
+    font-size: 14px;
+    flex: 1;
+}
+
+.ngs-bulk-bar .ngs-btn {
+    min-height: 36px;
+    font-size: 13px;
+    padding: 7px 14px;
+}
+
+.ngs-bulk-bar .ngs-btn-secondary {
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.4);
+    color: #fff;
+}
+
+.ngs-bulk-bar .ngs-btn-secondary:hover {
+    background: rgba(255,255,255,0.25);
+}
+
+.ngs-bulk-bar .ngs-btn-danger {
+    background: #d63638;
+}
+
+/* -----------------------------------------------------------------------------
+   Pagination
+   ----------------------------------------------------------------------------- */
+.ngs-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.ngs-page-btn {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    color: #1d2327;
+}
+
+.ngs-page-btn:hover:not(:disabled) {
+    background: #f0f6ff;
+    border-color: #2271b1;
+    color: #2271b1;
+}
+
+.ngs-page-btn.active {
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+}
+
+.ngs-page-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.ngs-page-info {
+    font-size: 13px;
+    color: #646970;
+    padding: 0 8px;
+}
+
+/* -----------------------------------------------------------------------------
+   Form Elements
+   ----------------------------------------------------------------------------- */
+.ngs-form {
+    padding-bottom: 80px; /* room for sticky footer */
+}
+
+.ngs-form-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.ngs-form-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 16px;
+}
+
+.ngs-form-section-header.collapsible {
+    margin-bottom: 0;
+}
+
+.ngs-form-section-header.collapsible.open {
+    margin-bottom: 16px;
+}
+
+.ngs-form-section-toggle {
+    font-size: 18px;
+    transition: transform 0.2s ease;
+    color: #646970;
+}
+
+.ngs-form-section-toggle.open {
+    transform: rotate(180deg);
+}
+
+.ngs-field {
+    margin-bottom: 16px;
+}
+
+.ngs-field:last-child {
+    margin-bottom: 0;
+}
+
+.ngs-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d2327;
+    margin-bottom: 6px;
+}
+
+.ngs-label .required {
+    color: #d63638;
+    margin-left: 2px;
+}
+
+.ngs-input,
+.ngs-select,
+.ngs-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #8c8f94;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #fff;
+    color: #1d2327;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    min-height: 44px;
+    font-family: inherit;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.ngs-input:focus,
+.ngs-select:focus,
+.ngs-textarea:focus {
+    outline: none;
+    border-color: #2271b1;
+    box-shadow: 0 0 0 2px rgba(34, 113, 177, 0.2);
+}
+
+.ngs-input.has-error,
+.ngs-select.has-error,
+.ngs-textarea.has-error {
+    border-color: #d63638;
+    box-shadow: 0 0 0 2px rgba(214, 54, 56, 0.15);
+}
+
+.ngs-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238c8f94' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+}
+
+.ngs-textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.ngs-field-error {
+    color: #d63638;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.ngs-field-hint {
+    color: #646970;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.ngs-input-group {
+    display: flex;
+    gap: 8px;
+}
+
+.ngs-input-group .ngs-input {
+    flex: 1;
+}
+
+.ngs-input-prefix,
+.ngs-input-suffix {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    background: #f6f7f7;
+    border: 1px solid #8c8f94;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #646970;
+    white-space: nowrap;
+}
+
+.ngs-input-prefix {
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+}
+
+.ngs-input-suffix {
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+}
+
+.ngs-input-prefix + .ngs-input {
+    border-radius: 0 8px 8px 0;
+}
+
+.ngs-input + .ngs-input-suffix {
+    border-radius: 0 8px 8px 0;
+}
+
+/* Toggle / Checkbox Switch */
+.ngs-toggle-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 44px;
+}
+
+.ngs-toggle {
+    position: relative;
+    width: 46px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.ngs-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.ngs-toggle-slider {
+    position: absolute;
+    inset: 0;
+    background: #ccc;
+    border-radius: 26px;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.ngs-toggle-slider::before {
+    content: '';
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    left: 3px;
+    top: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+}
+
+.ngs-toggle input:checked + .ngs-toggle-slider {
+    background: #2271b1;
+}
+
+.ngs-toggle input:checked + .ngs-toggle-slider::before {
+    transform: translateX(20px);
+}
+
+.ngs-toggle-label {
+    font-size: 14px;
+    color: #1d2327;
+}
+
+/* Image Upload */
+.ngs-image-upload {
+    border: 2px dashed #c3c4c7;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease;
+    position: relative;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    color: #646970;
+}
+
+.ngs-image-upload:hover {
+    border-color: #2271b1;
+    background: #f0f6ff;
+    color: #2271b1;
+}
+
+.ngs-image-upload input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.ngs-image-preview {
+    width: 100%;
+    max-height: 160px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* Inline category add */
+.ngs-inline-add {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.ngs-inline-add .ngs-input {
+    flex: 1;
+    min-height: 38px;
+    padding: 8px 10px;
+    font-size: 13px;
+}
+
+/* -----------------------------------------------------------------------------
+   Variation Table
+   ----------------------------------------------------------------------------- */
+.ngs-var-table-wrap {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.ngs-var-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 560px;
+}
+
+.ngs-var-table th {
+    background: #f6f7f7;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #646970;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid #e0e0e0;
+    white-space: nowrap;
+}
+
+.ngs-var-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+.ngs-var-table tr:last-child td {
+    border-bottom: none;
+}
+
+.ngs-var-table tr:hover td {
+    background: #f9f9f9;
+}
+
+.ngs-var-table .ngs-input {
+    min-height: 38px;
+    padding: 7px 10px;
+    font-size: 13px;
+    border-radius: 6px;
+    min-width: 80px;
+}
+
+.ngs-var-handle {
+    cursor: grab;
+    color: #c3c4c7;
+    padding: 4px;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.ngs-var-handle:active {
+    cursor: grabbing;
+}
+
+/* -----------------------------------------------------------------------------
+   Category Manager
+   ----------------------------------------------------------------------------- */
+.ngs-cat-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ngs-cat-item {
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+
+.ngs-cat-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    gap: 10px;
+    min-height: 52px;
+}
+
+.ngs-cat-expand {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #646970;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.15s ease, transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.ngs-cat-expand:hover {
+    background: #f0f0f0;
+}
+
+.ngs-cat-expand.open {
+    transform: rotate(90deg);
+}
+
+.ngs-cat-name {
+    flex: 1;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.ngs-cat-name-input {
+    flex: 1;
+    padding: 6px 10px;
+    border: 1px solid #2271b1;
+    border-radius: 6px;
+    font-size: 14px;
+    min-height: 38px;
+}
+
+.ngs-cat-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.ngs-cat-children {
+    border-top: 1px solid #f0f0f0;
+    padding: 8px 0;
+    background: #fafafa;
+}
+
+.ngs-cat-child-row {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px 8px 48px;
+    gap: 10px;
+    min-height: 44px;
+    transition: background 0.15s ease;
+}
+
+.ngs-cat-child-row:hover {
+    background: #f0f0f0;
+}
+
+.ngs-cat-add-row {
+    padding: 8px 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.ngs-cat-add-row.sub {
+    padding-left: 48px;
+    background: #fafafa;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* -----------------------------------------------------------------------------
+   Barcode Modal / Slide-up
+   ----------------------------------------------------------------------------- */
+.ngs-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    animation: ngs-fade-in 0.2s ease;
+}
+
+@media (min-width: 600px) {
+    .ngs-modal-backdrop {
+        align-items: center;
+    }
+}
+
+@keyframes ngs-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.ngs-modal {
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    width: 100%;
+    max-width: 480px;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: ngs-slide-up 0.3s ease;
+}
+
+@media (min-width: 600px) {
+    .ngs-modal {
+        border-radius: 16px;
+        max-height: 80vh;
+    }
+}
+
+@keyframes ngs-slide-up {
+    from { transform: translateY(30px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+.ngs-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.ngs-modal-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.ngs-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #646970;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+}
+
+.ngs-modal-close:hover {
+    background: #f0f0f0;
+}
+
+/* -----------------------------------------------------------------------------
+   Barcode Label
+   ----------------------------------------------------------------------------- */
+.ngs-barcode-label {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    background: #fff;
+    margin-bottom: 20px;
+}
+
+.ngs-barcode-shop-name {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.ngs-barcode-product-name {
+    font-size: 12px;
+    color: #646970;
+    margin-bottom: 2px;
+    line-height: 1.3;
+}
+
+.ngs-barcode-variation {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-bottom: 6px;
+}
+
+.ngs-barcode-price {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #1d2327;
+}
+
+.ngs-barcode-svg-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 6px;
+    overflow: hidden;
+}
+
+.ngs-barcode-svg-wrap svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.ngs-barcode-sku {
+    font-family: 'Courier New', monospace;
+    font-size: 10px;
+    color: #646970;
+}
+
+.ngs-barcode-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.ngs-barcode-nav-info {
+    font-size: 13px;
+    color: #646970;
+}
+
+/* -----------------------------------------------------------------------------
+   Bulk Barcode Print Area
+   ----------------------------------------------------------------------------- */
+#ngs-print-area {
+    display: none;
+}
+
+.ngs-print-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4mm;
+    width: 200mm;
+    margin: 0 auto;
+}
+
+/* -----------------------------------------------------------------------------
+   Notice / Alert
+   ----------------------------------------------------------------------------- */
+.ngs-notice {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.ngs-notice-success {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #15803d;
+}
+
+.ngs-notice-error {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    color: #be123c;
+}
+
+.ngs-notice-warning {
+    background: #fffbeb;
+    border: 1px solid #fed7aa;
+    color: #92400e;
+}
+
+/* Empty state */
+.ngs-empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: #646970;
+}
+
+.ngs-empty-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.ngs-empty-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1d2327;
+    margin-bottom: 6px;
+}
+
+.ngs-empty-desc {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Sticky Footer */
+.ngs-form-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: 1px solid #e0e0e0;
+    padding: 12px 16px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.08);
+}
+
+@media (min-width: 782px) {
+    .ngs-form-footer {
+        left: 160px; /* WP admin sidebar width */
+    }
+}
+
+/* Row with two columns */
+.ngs-row {
+    display: flex;
+    gap: 12px;
+}
+
+.ngs-row > * {
+    flex: 1;
+}
+
+/* -----------------------------------------------------------------------------
+   Export Page
+   ----------------------------------------------------------------------------- */
+.ngs-export-section {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.ngs-export-section h3 {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    color: #1d2327;
+}
+
+.ngs-export-desc {
+    color: #646970;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+/* -----------------------------------------------------------------------------
+   Mobile Overrides (max-width: 782px)
+   ----------------------------------------------------------------------------- */
+@media (max-width: 782px) {
+    #ngs-app {
+        padding: 8px;
+        margin: 0 -10px;
+    }
+
+    /* Make sure all inputs are 16px+ to prevent iOS zoom */
+    input,
+    select,
+    textarea {
+        font-size: 16px !important;
+        min-height: 44px;
+    }
+
+    .ngs-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .ngs-search-wrap {
+        width: 100%;
+    }
+
+    .ngs-filter-select {
+        width: 100%;
+    }
+
+    .ngs-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .ngs-form-section {
+        border-radius: 8px;
+        padding: 14px;
+    }
+
+    .ngs-card {
+        border-radius: 8px;
+    }
+
+    .ngs-page-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* Desktop enhancements */
+@media (min-width: 783px) {
+    #ngs-app {
+        padding: 0 8px;
+    }
+
+    .ngs-card-header {
+        align-items: center;
+    }
+
+    .ngs-bulk-bar {
+        border-radius: 10px;
+    }
+}
+
+/* =============================================================================
+   PRINT STYLES
+   ============================================================================= */
+@media print {
+    /* Hide everything except the print area */
+    body > *,
+    #wpcontent,
+    #adminmenuwrap,
+    #wpadminbar,
+    #wpfooter,
+    .ngs-no-print {
+        display: none !important;
+    }
+
+    #ngs-print-area {
+        display: block !important;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 210mm;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* A4: 3 across × 8 down = 24 labels per page */
+    .ngs-label {
+        width: 63mm;
+        height: 35mm;
+        border: 0.5px solid #bbb;
+        padding: 2mm;
+        page-break-inside: avoid;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        font-family: 'Arial', sans-serif;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .ngs-label-shop {
+        font-weight: bold;
+        font-size: 8pt;
+        text-align: center;
+        width: 100%;
+    }
+
+    .ngs-label-name {
+        font-size: 7pt;
+        text-align: center;
+        width: 100%;
+        line-height: 1.2;
+        overflow: hidden;
+        max-height: 2.4em;
+    }
+
+    .ngs-label-price {
+        font-weight: bold;
+        font-size: 9pt;
+    }
+
+    .ngs-label-barcode svg {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .ngs-label-sku {
+        font-family: monospace;
+        font-size: 7pt;
+    }
+
+    .ngs-print-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 63mm);
+        gap: 1mm;
+        page-break-after: always;
+    }
+
+    @page {
+        size: A4;
+        margin: 5mm;
+    }
+}
